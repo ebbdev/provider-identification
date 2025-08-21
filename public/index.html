@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Host }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container level-item">
+      <div class="columns has-text-centered">
+        <div class='column is-full'>
+          <div class='card equal-height'>
+            <div class="card-image has-text-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <img src="data:image/png;base64,{{ printf " %s" .Logo }}" />
+              </figure>
+            </div>
+            <div class='card-content'>
+              <div class="content">
+                <p class="title has-text-centered">{{ .Host }}</p>
+                <p class="subtitle">provided by</p>
+                <div class="tile is-ancestor">
+                  <div class="tile is-parent is-vertical">
+                    <div class="tile is-child notification is-info is-light">
+                      <div class="tile is-parent">
+                        <span class="title is-4">Owner</span>
+                        <div class="tile is-child has-text-right p-4">
+                          {{ .Owner.Name }} <br />
+                          {{ .Owner.Street }}<br />
+                          {{ .Owner.Zip }}&nbsp;{{ .Owner.Place }}<br />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tile is-child notification is-success is-light">
+                      <div class="tile is-parent mt-4">
+                        <span class="title is-4">Contact</span>
+                        <div class="tile is-child has-text-right p-4">
+                          <a href="mailto:contact@{{ .Host }}">{{ .ContactMail }}@{{ .Host }}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

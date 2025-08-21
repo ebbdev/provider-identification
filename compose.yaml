@@ -1,0 +1,22 @@
+---
+services:
+  provider-identification:
+    image: ebbdev/provider-identification
+    networks:
+      - traefik
+    environment:
+      - OWNER_NAME=Your Name
+      - OWNER_STREET=your address
+      - OWNER_ZIP=00000
+      - OWNER_PLACE=your city
+      - CONTACT_MAIL=your contact mail without the domain
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.provider-identification.entrypoints=https"
+      - "traefik.http.routers.provider-identification.rule=Host(`www.example.com`) || Host(`demo.net`)"
+      - "traefik.http.routers.provider-identification.tls=true"
+      - "traefik.http.routers.provider-identification.tls.certresolver=letsencrypt"
+networks:
+  traefik:
+    external: true
